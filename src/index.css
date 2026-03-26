@@ -1,0 +1,355 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* CSS Variables for consistent theming */
+:root {
+  --accent-primary: #6366f1;
+  --accent-secondary: #a855f7;
+  --accent-pink: #ec4899;
+  --accent-cyan: #06b6d4;
+  --accent-orange: #f97316;
+  
+  --text-primary: #ffffff;
+  --text-secondary: #a0a0a0;
+  --text-muted: #6b7280;
+  
+  --bg-primary: #0a0a0a;
+  --bg-secondary: #1a1a1a;
+  --bg-card: #141414;
+  --bg-border: #262626;
+}
+
+/* Glass morphism effect */
+.glass {
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.37);
+}
+
+/* Display font */
+.font-display {
+  font-family: 'Inter', system-ui, -apple-system, sans-serif;
+  font-weight: 700;
+}
+
+/* Gradient text styles */
+.gradient-text {
+  background: linear-gradient(135deg, var(--accent-primary) 0%, var(--accent-secondary) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.gradient-text-subtle {
+  background: linear-gradient(135deg, #ffffff 0%, var(--accent-secondary) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: 'Inter', system-ui, -apple-system, sans-serif;
+  background-color: #0a0a0a;
+  color: #f5f5f5;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Custom scrollbar - minimal */
+::-webkit-scrollbar {
+  width: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: #0a0a0a;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #333;
+  border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #444;
+}
+
+/* Selection - subtle */
+::selection {
+  background: rgba(255, 255, 255, 0.1);
+  color: #fff;
+}
+
+/* Glass effect - more subtle */
+.glass {
+  background: rgba(255, 255, 255, 0.03);
+  backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.glass-card {
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(20px);
+  box-shadow: 
+    0 10px 30px rgba(0,0,0,0.3),
+    inset 0 0 0 1px rgba(255,255,255,0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.glass-strong {
+  background: rgba(18, 18, 26, 0.8);
+  backdrop-filter: blur(30px);
+  box-shadow: 
+    0 20px 40px rgba(0,0,0,0.4),
+    inset 0 0 0 1px rgba(255,255,255,0.08);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+/* Premium depth for cards */
+.premium-card {
+  background: rgba(255, 255, 255, 0.02);
+  backdrop-filter: blur(10px);
+  box-shadow: 
+    0 10px 30px rgba(0,0,0,0.3),
+    inset 0 0 0 1px rgba(255,255,255,0.05);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+/* Interactive accent glow */
+.accent-glow:hover {
+  box-shadow: 
+    0 0 20px rgba(255, 107, 157, 0.4),
+    0 0 40px rgba(192, 132, 252, 0.2);
+}
+
+.accent-glow-pink:hover {
+  box-shadow: 
+    0 0 25px rgba(255, 107, 157, 0.5),
+    0 0 50px rgba(255, 107, 157, 0.3);
+}
+
+.accent-glow-purple:hover {
+  box-shadow: 
+    0 0 25px rgba(192, 132, 252, 0.5),
+    0 0 50px rgba(192, 132, 252, 0.3);
+}
+
+/* Luxury motion base */
+.luxury-transition {
+  transition: all 0.6s ease-out;
+}
+
+.luxury-transition-slow {
+  transition: all 0.8s ease-out;
+}
+
+/* Flower petal signature effects */
+@keyframes petalFloat {
+  0% { 
+    transform: translateY(0) rotate(0deg); 
+    opacity: 0;
+  }
+  10% {
+    opacity: 1;
+  }
+  90% {
+    opacity: 1;
+  }
+  100% { 
+    transform: translateY(-100px) rotate(360deg); 
+    opacity: 0;
+  }
+}
+
+.petal {
+  position: absolute;
+  width: 8px;
+  height: 8px;
+  background: linear-gradient(135deg, var(--accent-primary), var(--accent-secondary));
+  border-radius: 0% 100% 0% 100%;
+  animation: petalFloat 4s ease-out infinite;
+  pointer-events: none;
+}
+
+.petal:nth-child(1) { left: 10%; animation-delay: 0s; }
+.petal:nth-child(2) { left: 30%; animation-delay: 1s; }
+.petal:nth-child(3) { left: 50%; animation-delay: 2s; }
+.petal:nth-child(4) { left: 70%; animation-delay: 3s; }
+.petal:nth-child(5) { left: 90%; animation-delay: 4s; }
+
+@keyframes bloomEffect {
+  0% {
+    transform: scale(0.8) rotate(0deg);
+    opacity: 0;
+  }
+  50% {
+    transform: scale(1.1) rotate(180deg);
+    opacity: 1;
+  }
+  100% {
+    transform: scale(1) rotate(360deg);
+    opacity: 0.8;
+  }
+}
+
+.bloom-on-hover:hover {
+  animation: bloomEffect 0.8s ease-out;
+}
+
+/* Line clamp utility */
+.line-clamp-2 {
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+/* Universal container */
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+/* Reduced section spacing */
+.section {
+  padding: 10px 0;
+}
+
+/* Base Card System */
+.card {
+  background: rgba(255,255,255,0.03);
+  border: 1px solid rgba(255,255,255,0.08);
+  backdrop-filter: blur(10px);
+  border-radius: 16px;
+  padding: 20px;
+}
+
+/* Mobile-first optimizations */
+@media (max-width: 768px) {
+  .hero-section {
+    padding: 4rem 1rem;
+    min-height: 100vh;
+  }
+  
+  .hero-title {
+    font-size: 2.5rem !important;
+    line-height: 1.2 !important;
+  }
+  
+  .hero-description {
+    font-size: 1rem !important;
+  }
+  
+  .cta-button {
+    padding: 1rem 1.5rem !important;
+    font-size: 0.9rem !important;
+  }
+  
+  .skill-card {
+    padding: 1.5rem !important;
+  }
+  
+  .project-card {
+    padding: 1.5rem !important;
+  }
+  
+  .section-padding {
+    padding: 2.5rem 1rem !important;
+  }
+  
+  .section-title {
+    font-size: 2rem !important;
+  }
+  
+  .section-label {
+    font-size: 0.75rem !important;
+  }
+
+  /* Enhanced mobile fixes */
+  .container {
+    padding: 0 1rem !important;
+  }
+
+  .glass {
+    backdrop-filter: blur(8px) !important;
+  }
+
+  .glass-strong {
+    backdrop-filter: blur(12px) !important;
+  }
+
+  /* Touch-friendly buttons */
+  button, a {
+    min-height: 44px;
+    min-width: 44px;
+  }
+
+  /* Better text spacing */
+  .text-sm {
+    font-size: 0.875rem !important;
+  }
+
+  .text-xs {
+    font-size: 0.75rem !important;
+  }
+
+  /* Form improvements */
+  input, textarea {
+    font-size: 16px !important; /* Prevents zoom on iOS */
+    padding: 12px !important;
+  }
+}
+
+/* Small phones */
+@media (max-width: 480px) {
+  .hero-title {
+    font-size: 2rem !important;
+  }
+  
+  .section-title {
+    font-size: 1.75rem !important;
+  }
+
+  .container {
+    padding: 0 0.75rem !important;
+  }
+}
+
+/* Tablets */
+@media (min-width: 769px) and (max-width: 1024px) {
+  .container {
+    padding: 0 2rem !important;
+  }
+}
+
+/* Touch-friendly interactions */
+@media (hover: none) and (pointer: coarse) {
+  .hover-effect {
+    transform: none !important;
+  }
+  
+  .accent-glow:hover {
+    box-shadow: none !important;
+  }
+  
+  .data-cursor {
+    cursor: default !important;
+  }
+}
